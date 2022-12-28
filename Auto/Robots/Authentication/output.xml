@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.0.1 (Python 3.10.2 on win32)" generated="20221223 17:49:16.011" rpa="false" schemaversion="3">
+<suite id="s1" name="Authentication" source="C:\Users\zon13\Documents\GitHub\FormacaoOnJob\Auto\Robots\Authentication\Authentication.Robot">
+<test id="s1-t1" name="User Authentication" line="10">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>https://${username}:${password}@the-internet.herokuapp.com/basic_auth</arg>
+<arg>Edge</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20221223 17:49:16.310" level="INFO">Opening browser 'Edge' to base url 'https://admin:admin@the-internet.herokuapp.com/basic_auth'.</msg>
+<status status="PASS" starttime="20221223 17:49:16.309" endtime="20221223 17:49:19.279"/>
+</kw>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<arg>Congratulations!</arg>
+<arg>timeout=5s</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" starttime="20221223 17:49:19.280" endtime="20221223 17:49:19.296"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20221223 17:49:21.299" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20221223 17:49:19.297" endtime="20221223 17:49:21.299"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20221223 17:49:21.300" endtime="20221223 17:49:23.495"/>
+</kw>
+<status status="PASS" starttime="20221223 17:49:16.308" endtime="20221223 17:49:23.496"/>
+</test>
+<status status="PASS" starttime="20221223 17:49:16.013" endtime="20221223 17:49:23.498"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Authentication">Authentication</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
