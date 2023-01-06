@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.0.1 (Python 3.10.2 on win32)" generated="20230104 14:27:02.738" rpa="false" schemaversion="3">
+<suite id="s1" name="DragAndDrop" source="C:\Users\zon13\Documents\GitHub\FormacaoOnJob\Auto\Robots\DragAndDrop\DragAndDrop.Robot">
+<test id="s1-t1" name="Drag and Drop" line="6">
+<kw name="Evaluate" library="BuiltIn">
+<var>${chrome options}</var>
+<arg>sys.modules['selenium.webdriver'].ChromeOptions()</arg>
+<arg>sys, selenium.webdriver</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20230104 14:27:03.070" level="INFO">${chrome options} = &lt;selenium.webdriver.chrome.options.Options object at 0x00000214CB0AD960&gt;</msg>
+<status status="PASS" starttime="20230104 14:27:03.070" endtime="20230104 14:27:03.070"/>
+</kw>
+<kw name="Create Webdriver" library="SeleniumLibrary">
+<arg>Chrome</arg>
+<arg>chrome_options=${chrome options}</arg>
+<doc>Creates an instance of Selenium WebDriver.</doc>
+<msg timestamp="20230104 14:27:03.071" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<status status="PASS" starttime="20230104 14:27:03.071" endtime="20230104 14:27:04.496"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20230104 14:27:04.496" endtime="20230104 14:27:04.615"/>
+</kw>
+<kw name="Go To" library="SeleniumLibrary">
+<arg>https://the-internet.herokuapp.com/</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20230104 14:27:04.616" level="INFO">Opening url 'https://the-internet.herokuapp.com/'</msg>
+<status status="PASS" starttime="20230104 14:27:04.615" endtime="20230104 14:27:06.219"/>
+</kw>
+<kw name="Click Link" library="SeleniumLibrary">
+<arg>link:Drag and Drop</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<msg timestamp="20230104 14:27:06.221" level="INFO">Clicking link 'link:Drag and Drop'.</msg>
+<status status="PASS" starttime="20230104 14:27:06.220" endtime="20230104 14:27:06.463"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230104 14:27:07.471" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20230104 14:27:06.463" endtime="20230104 14:27:07.471"/>
+</kw>
+<kw name="Get File" library="OperatingSystem">
+<var>${js}</var>
+<arg>drag-n-drop.js</arg>
+<doc>Returns the contents of a specified file.</doc>
+<msg timestamp="20230104 14:27:07.472" level="INFO" html="true">Getting file '&lt;a href="file://C:\Users\zon13\Documents\GitHub\FormacaoOnJob\Auto\Robots\DragAndDrop\drag-n-drop.js"&gt;C:\Users\zon13\Documents\GitHub\FormacaoOnJob\Auto\Robots\DragAndDrop\drag-n-drop.js&lt;/a&gt;'.</msg>
+<msg timestamp="20230104 14:27:07.473" level="INFO">${js} = var dataTransfer =
+{
+    dropEffect: '',
+    effectAllowed: 'all',
+    files: [],
+    items: {},
+    types: [],
+    setData: function (format, data) {
+        this.items[format] = data;
+        this.t...</msg>
+<status status="PASS" starttime="20230104 14:27:07.472" endtime="20230104 14:27:07.473"/>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<var>${result}</var>
+<arg>${js}; return DragNDrop("column-a", "column-b");</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<msg timestamp="20230104 14:27:07.475" level="INFO">Executing JavaScript:
+var dataTransfer =
+{
+    dropEffect: '',
+    effectAllowed: 'all',
+    files: [],
+    items: {},
+    types: [],
+    setData: function (format, data) {
+        this.items[format] = data;
+        this.types.push(format);
+    },
+    getData: function (format) {
+        return this.items[format];
+    },
+    clearData: function (format) { }
+};
+var emit = function (event, target) {
+    var evt = document.createEvent('Event');
+    evt.initEvent(event, true, false);
+    evt.dataTransfer = dataTransfer;
+    target.dispatchEvent(evt);
+};
+
+var DragNDrop = function (src, tgt) {
+    src = document.getElementById(src);
+    tgt = document.getElementById(tgt);
+    emit('dragstart', src);
+    emit('dragenter', tgt);
+    emit('dragover', tgt);
+    emit('drop', tgt);
+    emit('dragend', src);
+    return true;
+}; return DragNDrop("column-a", "column-b");
+Without any arguments.</msg>
+<msg timestamp="20230104 14:27:07.483" level="INFO">${result} = True</msg>
+<status status="PASS" starttime="20230104 14:27:07.474" endtime="20230104 14:27:07.483"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230104 14:27:08.497" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20230104 14:27:07.484" endtime="20230104 14:27:08.497"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20230104 14:27:08.498" endtime="20230104 14:27:10.677"/>
+</kw>
+<status status="PASS" starttime="20230104 14:27:03.069" endtime="20230104 14:27:10.678"/>
+</test>
+<status status="PASS" starttime="20230104 14:27:02.740" endtime="20230104 14:27:10.681"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="DragAndDrop">DragAndDrop</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

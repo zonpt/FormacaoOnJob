@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.0.1 (Python 3.10.2 on win32)" generated="20230106 15:13:50.749" rpa="false" schemaversion="3">
+<suite id="s1" name="Api" source="C:\Users\zon13\Documents\GitHub\FormacaoOnJob\Auto\Robots\API\Get\api.robot">
+<test id="s1-t1" name="Post Test" line="16">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>mysession</arg>
+<arg>${api_url}</arg>
+<arg>verify=true</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20230106 15:13:51.024" level="INFO">Creating Session using : alias=mysession, url=https://petstore3.swagger.io, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=True,                     debug=0 </msg>
+<status status="PASS" starttime="20230106 15:13:51.023" endtime="20230106 15:13:51.024"/>
+</kw>
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>mysession</arg>
+<arg>${service}</arg>
+<arg>params=</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20230106 15:13:51.492" level="INFO">GET Request : url=https://petstore3.swagger.io/api/v3/pet/1 
+ path_url=/api/v3/pet/1 
+ headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20230106 15:13:51.493" level="INFO">GET Response : url=https://petstore3.swagger.io/api/v3/pet/1 
+ status=200, reason=OK 
+ headers={'Date': 'Fri, 06 Jan 2023 15:13:51 GMT', 'Content-Type': 'application/json', 'Content-Length': '126', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET, POST, DELETE, PUT', 'Access-Control-Allow-Headers': 'Content-Type, api_key, Authorization', 'Access-Control-Expose-Headers': 'Content-Disposition', 'Server': 'Jetty(9.4.9.v20180320)'} 
+ body={"id":1,"name":"Dogs","photoUrls":["ut do adipisicing"],"tags":[{"id":-51733822,"name":"anim ipsum elit"}],"status":"pending"} 
+ </msg>
+<msg timestamp="20230106 15:13:51.493" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230106 15:13:51.024" endtime="20230106 15:13:51.493"/>
+</kw>
+<kw name="Status Should Be" library="RequestsLibrary">
+<arg>200</arg>
+<arg>${response}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" starttime="20230106 15:13:51.494" endtime="20230106 15:13:51.494"/>
+</kw>
+<kw name="Get Value From Json" library="JSONLibrary">
+<var>${field}</var>
+<arg>${response.json()}</arg>
+<arg>${field}</arg>
+<doc>Get Value From JSON using JSONPath</doc>
+<msg timestamp="20230106 15:13:51.536" level="INFO">${field} = ['Dogs']</msg>
+<status status="PASS" starttime="20230106 15:13:51.495" endtime="20230106 15:13:51.536"/>
+</kw>
+<kw name="Get From List" library="Collections">
+<var>${fieldFromList}</var>
+<arg>${field}</arg>
+<arg>0</arg>
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<msg timestamp="20230106 15:13:51.537" level="INFO">${fieldFromList} = Dogs</msg>
+<status status="PASS" starttime="20230106 15:13:51.537" endtime="20230106 15:13:51.537"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${fieldFromList}</arg>
+<arg>${result}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<msg timestamp="20230106 15:13:51.538" level="FAIL">Dogs != Velociraptor</msg>
+<status status="FAIL" starttime="20230106 15:13:51.538" endtime="20230106 15:13:51.538"/>
+</kw>
+<status status="FAIL" starttime="20230106 15:13:51.023" endtime="20230106 15:13:51.539">Dogs != Velociraptor</status>
+</test>
+<status status="FAIL" starttime="20230106 15:13:50.750" endtime="20230106 15:13:51.540"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="0" fail="1" skip="0" id="s1" name="Api">Api</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
